@@ -436,7 +436,7 @@ CREATE TABLE `__PREFIX__user` (
   `loginip` varchar(50) NOT NULL DEFAULT '' COMMENT '登录IP',
   `loginfailure` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '失败次数',
   `joinip` varchar(50) NOT NULL DEFAULT '' COMMENT '加入IP',
-  `jointime` int(10) NOT NULL COMMENT '加入时间',
+  `join_time` int(10) NOT NULL COMMENT '加入时间',
   `createtime` int(10) NOT NULL COMMENT '创建时间',
   `updatetime` int(10) NOT NULL COMMENT '更新时间',
   `token` varchar(50) NOT NULL DEFAULT '' COMMENT 'Token',

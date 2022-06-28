@@ -41,8 +41,8 @@ class Dashboard extends Backend
         $column = [];
         $starttime = Date::unixtime('day', -6);
         $endtime = Date::unixtime('day', 0, 'end');
-        $joinlist = Db::name("user")->where('jointime', 'between time', [$starttime, $endtime])
-            ->field('jointime, status, COUNT(*) AS nums, DATE_FORMAT(FROM_UNIXTIME(jointime), "%Y-%m-%d") AS join_date')
+        $joinlist = Db::name("user")->where('join_time', 'between time', [$starttime, $endtime])
+            ->field('join_time, status, COUNT(*) AS nums, DATE_FORMAT(FROM_UNIXTIME(join_time), "%Y-%m-%d") AS join_date')
             ->group('join_date')
             ->select();
         for ($time = $starttime; $time <= $endtime;) {
@@ -60,12 +60,12 @@ class Dashboard extends Backend
             'totaladdon'      => count(get_addon_list()),
             'totaladmin'      => Admin::count(),
             'totalcategory'   => \app\common\model\Category::count(),
-            'todayusersignup' => User::whereTime('jointime', 'today')->count(),
+            'todayusersignup' => User::whereTime('join_time', 'today')->count(),
             'todayuserlogin'  => User::whereTime('logintime', 'today')->count(),
-            'sevendau'        => User::whereTime('jointime|logintime|prevtime', '-7 days')->count(),
-            'thirtydau'       => User::whereTime('jointime|logintime|prevtime', '-30 days')->count(),
-            'threednu'        => User::whereTime('jointime', '-3 days')->count(),
-            'sevendnu'        => User::whereTime('jointime', '-7 days')->count(),
+            'sevendau'        => User::whereTime('join_time|logintime|prevtime', '-7 days')->count(),
+            'thirtydau'       => User::whereTime('join_time|logintime|prevtime', '-30 days')->count(),
+            'threednu'        => User::whereTime('join_time', '-3 days')->count(),
+            'sevendnu'        => User::whereTime('join_time', '-7 days')->count(),
             'dbtablenums'     => count($dbTableList),
             'dbsize'          => array_sum(array_map(function ($item) {
                 return $item['Data_length'] + $item['Index_length'];

@@ -170,7 +170,7 @@ class Auth
         $params = array_merge($data, [
             'nickname'  => $username,
             'salt'      => Random::alnum(),
-            'jointime'  => $time,
+            'join_time'  => $time,
             'joinip'    => $ip,
             'logintime' => $time,
             'loginip'   => $ip,

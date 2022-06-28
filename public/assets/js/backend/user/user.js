@@ -69,8 +69,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         },
                         {field: 'loginip', title: __('Loginip'), formatter: Table.api.formatter.search},
                         {
-                            field: 'jointime',
-                            title: __('Jointime'),
+                            field: 'join_time',
+                            title: __('join_time'),
                             formatter: Table.api.formatter.datetime,
                             operate: 'RANGE',
                             addclass: 'datetimerange',

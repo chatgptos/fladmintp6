@@ -24,7 +24,7 @@ return [
     'Loginip'                                     => '登录IP',
     'Loginfailure'                                => '失败次数',
     'Joinip'                                      => '加入IP',
-    'Jointime'                                    => '加入时间',
+    'join_time'                                    => '加入时间',
     'Createtime'                                  => '创建时间',
     'Updatetime'                                  => '更新时间',
     'Token'                                       => 'Token',

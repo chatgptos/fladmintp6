@@ -20,7 +20,7 @@ class User extends BaseModel
     protected $append = [
         'prevtime_text',
         'logintime_text',
-        'jointime_text',
+        'join_time_text',
     ];
 
     public function getOriginData()
@@ -81,9 +81,9 @@ class User extends BaseModel
         return is_numeric($value) ? date('Y-m-d H:i:s', $value) : $value;
     }
 
-    public function getJointimeTextAttr($value, $data)
+    public function getjoin_timeTextAttr($value, $data)
     {
-        $value = $value ? $value : $data['jointime'];
+        $value = $value ? $value : $data['join_time'];
 
         return is_numeric($value) ? date('Y-m-d H:i:s', $value) : $value;
     }
@@ -98,7 +98,7 @@ class User extends BaseModel
         return $value && ! is_numeric($value) ? strtotime($value) : $value;
     }
 
-    protected function setJointimeAttr($value)
+    protected function setjoin_timeAttr($value)
     {
         return $value && ! is_numeric($value) ? strtotime($value) : $value;
     }
