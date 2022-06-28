@@ -73,7 +73,7 @@ class Auth extends \fast\Auth
             return false;
         }
         $admin->loginfailure = 0;
-        $admin->logintime = time();
+        $admin->login_time = time();
         $admin->loginip = request()->ip();
         $admin->token = Random::uuid();
         $admin->save();

@@ -18,8 +18,8 @@ class User extends BaseModel
     protected $updateTime = 'updatetime';
     // 追加属性
     protected $append = [
-        'prevtime_text',
-        'logintime_text',
+        'prev_time_text',
+        'login_time_text',
         'join_time_text',
     ];
 
@@ -67,16 +67,16 @@ class User extends BaseModel
         return ['normal' => __('Normal'), 'hidden' => __('Hidden')];
     }
 
-    public function getPrevtimeTextAttr($value, $data)
+    public function getprev_timeTextAttr($value, $data)
     {
-        $value = $value ? $value : $data['prevtime'];
+        $value = $value ? $value : $data['prev_time'];
 
         return is_numeric($value) ? date('Y-m-d H:i:s', $value) : $value;
     }
 
-    public function getLogintimeTextAttr($value, $data)
+    public function getlogin_timeTextAttr($value, $data)
     {
-        $value = $value ? $value : $data['logintime'];
+        $value = $value ? $value : $data['login_time'];
 
         return is_numeric($value) ? date('Y-m-d H:i:s', $value) : $value;
     }
@@ -88,12 +88,12 @@ class User extends BaseModel
         return is_numeric($value) ? date('Y-m-d H:i:s', $value) : $value;
     }
 
-    protected function setPrevtimeAttr($value)
+    protected function setprev_timeAttr($value)
     {
         return $value && ! is_numeric($value) ? strtotime($value) : $value;
     }
 
-    protected function setLogintimeAttr($value)
+    protected function setlogin_timeAttr($value)
     {
         return $value && ! is_numeric($value) ? strtotime($value) : $value;
     }

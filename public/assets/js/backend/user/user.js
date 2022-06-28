@@ -60,8 +60,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                             sortable: true
                         },
                         {
-                            field: 'logintime',
-                            title: __('Logintime'),
+                            field: 'login_time',
+                            title: __('login_time'),
                             formatter: Table.api.formatter.datetime,
                             operate: 'RANGE',
                             addclass: 'datetimerange',

@@ -197,7 +197,7 @@ class Config extends Model
             'uploadurl' => $uploadcfg['uploadurl'],
             'bucket'    => 'local',
             'maxsize'   => $uploadcfg['maxsize'],
-            'mimetype'  => $uploadcfg['mimetype'],
+            'mime_type'  => $uploadcfg['mime_type'],
             'multipart' => [],
             'multiple'  => $uploadcfg['multiple'],
         ];

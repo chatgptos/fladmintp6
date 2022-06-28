@@ -34,7 +34,7 @@ class Attachment extends Backend
     {
         parent::_initialize();
         $this->model = new \app\common\model\Attachment();
-        $this->view->assign("mimetypeList", \app\common\model\Attachment::getMimetypeList());
+        $this->view->assign("mime_typeList", \app\common\model\Attachment::getmime_typeList());
         $this->view->assign("categoryList", \app\common\model\Attachment::getCategoryList());
         $this->assignconfig("categoryList", \app\common\model\Attachment::getCategoryList());
     }
@@ -47,7 +47,7 @@ class Attachment extends Backend
         //设置过滤方法
         $this->request->filter(['strip_tags', 'trim']);
         if ($this->request->isAjax()) {
-            $mimetypeQuery = [];
+            $mime_typeQuery = [];
             $filter = $this->request->request('filter');
             $filterArr = (array)json_decode($filter, true);
             if (isset($filterArr['category']) && $filterArr['category'] == 'unclassed') {
@@ -56,16 +56,16 @@ class Attachment extends Backend
                 $arr = array_merge($get, ['filter' => json_encode(array_diff_key($filterArr, ['category' => '']))]);
                 $this->request->withGet($arr);
             }
-            if (isset($filterArr['mimetype']) && preg_match("/[]\,|\*]/", $filterArr['mimetype'])) {
-                $mimetype = $filterArr['mimetype'];
-                $filterArr = array_diff_key($filterArr, ['mimetype' => '']);
-                $mimetypeQuery = function ($query) use ($mimetype) {
-                    $mimetypeArr = explode(',', $mimetype);
-                    foreach ($mimetypeArr as $index => $item) {
+            if (isset($filterArr['mime_type']) && preg_match("/[]\,|\*]/", $filterArr['mime_type'])) {
+                $mime_type = $filterArr['mime_type'];
+                $filterArr = array_diff_key($filterArr, ['mime_type' => '']);
+                $mime_typeQuery = function ($query) use ($mime_type) {
+                    $mime_typeArr = explode(',', $mime_type);
+                    foreach ($mime_typeArr as $index => $item) {
                         if (stripos($item, "/*") !== false) {
-                            $query->whereOr('mimetype', 'like', str_replace("/*", "/", $item) . '%');
+                            $query->whereOr('mime_type', 'like', str_replace("/*", "/", $item) . '%');
                         } else {
-                            $query->whereOr('mimetype', 'like', '%' . $item . '%');
+                            $query->whereOr('mime_type', 'like', '%' . $item . '%');
                         }
                     }
                 };
@@ -78,13 +78,13 @@ class Attachment extends Backend
             [$where, $sort, $order, $offset, $limit] = $this->buildparams();
 
             $total = $this->model
-                ->where($mimetypeQuery)
+                ->where($mime_typeQuery)
                 ->where($where)
                 ->order($sort, $order)
                 ->count();
 
             $list = $this->model
-                ->where($mimetypeQuery)
+                ->where($mime_typeQuery)
                 ->where($where)
                 ->order($sort, $order)
                 ->limit($offset, $limit)

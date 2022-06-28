@@ -62,7 +62,7 @@ class Attachment extends BaseModel
         return '';
     }
 
-    public static function getMimetypeList()
+    public static function getmime_typeList()
     {
         $data = [
             "image/*"        => __("Image"),

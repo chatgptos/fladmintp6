@@ -172,9 +172,9 @@ class Auth
             'salt'      => Random::alnum(),
             'join_time'  => $time,
             'joinip'    => $ip,
-            'logintime' => $time,
+            'login_time' => $time,
             'loginip'   => $ip,
-            'prevtime'  => $time,
+            'prev_time'  => $time,
             'status'    => 'normal',
         ]);
         $params['password'] = $this->getEncryptPassword($password, $params['salt']);
@@ -328,16 +328,16 @@ class Auth
                 $time = time();
 
                 //判断连续登录和最大连续登录
-                if ($user->logintime < \fast\Date::unixtime('day')) {
-                    $user->successions = $user->logintime < \fast\Date::unixtime('day',
+                if ($user->login_time < \fast\Date::unixtime('day')) {
+                    $user->successions = $user->login_time < \fast\Date::unixtime('day',
                         -1) ? 1 : $user->successions + 1;
                     $user->maxsuccessions = max($user->successions, $user->maxsuccessions);
                 }
 
-                $user->prevtime = $user->logintime;
+                $user->prev_time = $user->login_time;
                 //记录本次登录的IP和时间
                 $user->loginip = $ip;
-                $user->logintime = $time;
+                $user->login_time = $time;
                 //重置登录失败次数
                 $user->loginfailure = 0;
 

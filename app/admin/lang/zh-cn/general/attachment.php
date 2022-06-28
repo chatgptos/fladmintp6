@@ -12,7 +12,7 @@ return [
     'Preview'                  => '预览',
     'Filename'                 => '文件名',
     'Filesize'                 => '文件大小',
-    'Mimetype'                 => 'Mime类型',
+    'mime_type'                 => 'Mime类型',
     'Image'                    => '图片',
     'Audio'                    => '音频',
     'Video'                    => '视频',

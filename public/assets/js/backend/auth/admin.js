@@ -42,7 +42,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'email', title: __('Email')},
                         {field: 'status', title: __("Status"), formatter: Table.api.formatter.status},
                         {
-                            field: 'logintime',
+                            field: 'login_time',
                             title: __('Login time'),
                             formatter: Table.api.formatter.datetime,
                             operate: 'RANGE',

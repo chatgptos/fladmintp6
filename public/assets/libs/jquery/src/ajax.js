@@ -142,7 +142,7 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
 	while ( dataTypes[ 0 ] === "*" ) {
 		dataTypes.shift();
 		if ( ct === undefined ) {
-			ct = s.mimeType || jqXHR.getResponseHeader( "Content-Type" );
+			ct = s.mime_type || jqXHR.getResponseHeader( "Content-Type" );
 		}
 	}
 
@@ -475,9 +475,9 @@ jQuery.extend( {
 				},
 
 				// Overrides response content-type header
-				overrideMimeType: function( type ) {
+				overridemime_type: function( type ) {
 					if ( !state ) {
-						s.mimeType = type;
+						s.mime_type = type;
 					}
 					return this;
 				},
@@ -636,7 +636,7 @@ jQuery.extend( {
 			jqXHR.setRequestHeader( i, s.headers[ i ] );
 		}
 
-		// Allow custom headers/mimetypes and early abort
+		// Allow custom headers/mime_types and early abort
 		if ( s.beforeSend &&
 			( s.beforeSend.call( callbackContext, jqXHR, s ) === false || state === 2 ) ) {
 

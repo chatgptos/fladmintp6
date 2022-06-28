@@ -91,7 +91,7 @@ class Ajax extends Backend
         $suffix = strtolower(pathinfo($fileInfo['name'], PATHINFO_EXTENSION));
         $suffix = $suffix && preg_match('/^[a-zA-Z0-9]+$/', $suffix) ? $suffix : 'file';
 
-        $mimetypeArr = explode(',', strtolower($upload['mimetype']));
+        $mime_typeArr = explode(',', strtolower($upload['mime_type']));
         $typeArr = explode('/', $fileInfo['type']);
 
         //禁止上传PHP和HTML文件
@@ -99,16 +99,16 @@ class Ajax extends Backend
             $this->error(__('Uploaded file format is limited'));
         }
 
-        //Mimetype值不正确
+        //mime_type值不正确
         if (stripos($fileInfo['type'], '/') === false) {
             $this->error(__('Uploaded file format is limited'));
         }
 
         //验证文件后缀
-        if ($upload['mimetype'] !== '*' &&
+        if ($upload['mime_type'] !== '*' &&
             (
-                !in_array($suffix, $mimetypeArr)
-                || (stripos($typeArr[0] . '/', $upload['mimetype']) !== false && (!in_array($fileInfo['type'], $mimetypeArr) && !in_array($typeArr[0] . '/*', $mimetypeArr)))
+                !in_array($suffix, $mime_typeArr)
+                || (stripos($typeArr[0] . '/', $upload['mime_type']) !== false && (!in_array($fileInfo['type'], $mime_typeArr) && !in_array($typeArr[0] . '/*', $mime_typeArr)))
             )
         ) {
             $this->error(__('Uploaded file format is limited'));
@@ -129,8 +129,8 @@ class Ajax extends Backend
 
         //上传图片
         $_validate[] = 'filesize:'.$size;
-        if ($upload['mimetype']) {
-            $_validate[] = 'fileExt:'.$upload['mimetype'];
+        if ($upload['mime_type']) {
+            $_validate[] = 'fileExt:'.$upload['mime_type'];
         }
         $validate = implode('|', $_validate);
 
@@ -160,7 +160,7 @@ class Ajax extends Backend
             'imageheight' => $imageheight,
             'imagetype'   => $suffix,
             'imageframes' => 0,
-            'mimetype'    => $fileInfo['type'],
+            'mime_type'    => $fileInfo['type'],
             'url'         => $savename,
             'uploadtime'  => time(),
             'storage'     => $upload['driver'],

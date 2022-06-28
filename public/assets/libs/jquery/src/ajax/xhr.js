@@ -50,8 +50,8 @@ jQuery.ajaxTransport( function( options ) {
 				}
 
 				// Override mime type if needed
-				if ( options.mimeType && xhr.overrideMimeType ) {
-					xhr.overrideMimeType( options.mimeType );
+				if ( options.mime_type && xhr.overridemime_type ) {
+					xhr.overridemime_type( options.mime_type );
 				}
 
 				// X-Requested-With header

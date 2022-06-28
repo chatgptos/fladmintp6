@@ -11371,7 +11371,7 @@ KISSY.add("ajax/xhrobject", function(S, Event) {
         // jsonp 时还需要把 script 转换成 json，后面还得自己来
         if (text || xml) {
 
-            var contentType = xhr.mimeType || xhr.getResponseHeader("Content-Type");
+            var contentType = xhr.mime_type || xhr.getResponseHeader("Content-Type");
 
             // 去除无用的通用格式
             while (dataType[0] == "*") {
@@ -11389,7 +11389,7 @@ KISSY.add("ajax/xhrobject", function(S, Event) {
                     }
                 }
             }
-            // 服务器端没有告知（并且客户端没有mimetype）默认 text 类型
+            // 服务器端没有告知（并且客户端没有mime_type）默认 text 类型
             dataType[0] = dataType[0] || "text";
 
             //获得合适的初始数据
@@ -11481,9 +11481,9 @@ KISSY.add("ajax/xhrobject", function(S, Event) {
             },
 
             // Overrides response content-type header
-            overrideMimeType: function(type) {
+            overridemime_type: function(type) {
                 if (!this.state) {
-                    this.mimeType = type;
+                    this.mime_type = type;
                 }
                 return this;
             },
@@ -11609,7 +11609,7 @@ KISSY.add("ajax/base", function(S, JSON, Event, XhrObject) {
                  username: null,
                  password: null,
                  cache: null,
-                 mimeType:null,
+                 mime_type:null,
                  xdr:{
                      subDomain:{
                         proxy:'http://xx.t.com/proxy.html'
@@ -11866,8 +11866,8 @@ KISSY.add("ajax/xhrbase", function(S, io) {
             }
 
             // Override mime type if supported
-            if (xhrObj.mimeType && xhr.overrideMimeType) {
-                xhr.overrideMimeType(xhrObj.mimeType);
+            if (xhrObj.mime_type && xhr.overridemime_type) {
+                xhr.overridemime_type(xhrObj.mime_type);
             }
             // yui3 and jquery both have
             if (!c.crossDomain && !xhrObj.requestHeaders["X-Requested-With"]) {

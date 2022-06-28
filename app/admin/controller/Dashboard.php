@@ -61,9 +61,9 @@ class Dashboard extends Backend
             'totaladmin'      => Admin::count(),
             'totalcategory'   => \app\common\model\Category::count(),
             'todayusersignup' => User::whereTime('join_time', 'today')->count(),
-            'todayuserlogin'  => User::whereTime('logintime', 'today')->count(),
-            'sevendau'        => User::whereTime('join_time|logintime|prevtime', '-7 days')->count(),
-            'thirtydau'       => User::whereTime('join_time|logintime|prevtime', '-30 days')->count(),
+            'todayuserlogin'  => User::whereTime('login_time', 'today')->count(),
+            'sevendau'        => User::whereTime('join_time|login_time|prev_time', '-7 days')->count(),
+            'thirtydau'       => User::whereTime('join_time|login_time|prev_time', '-30 days')->count(),
             'threednu'        => User::whereTime('join_time', '-3 days')->count(),
             'sevendnu'        => User::whereTime('join_time', '-7 days')->count(),
             'dbtablenums'     => count($dbTableList),
@@ -72,8 +72,8 @@ class Dashboard extends Backend
             }, $dbTableList)),
             'attachmentnums'  => Attachment::count(),
             'attachmentsize'  => Attachment::sum('filesize'),
-            'picturenums'     => Attachment::where('mimetype', 'like', 'image/%')->count(),
-            'picturesize'     => Attachment::where('mimetype', 'like', 'image/%')->sum('filesize'),
+            'picturenums'     => Attachment::where('mime_type', 'like', 'image/%')->count(),
+            'picturesize'     => Attachment::where('mime_type', 'like', 'image/%')->sum('filesize'),
         ]);
 
         $this->assignconfig('column', array_keys($userlist));
