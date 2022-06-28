@@ -1,5 +1,5 @@
 {
-    "name": "0377/fladmin-tp6",
+    "name": "phalconer/fladmintp6",
     "description": "fladmin新版本，基于thinkphp6.0和fladmin",
     "type": "project",
     "keywords": [
