@@ -16,7 +16,7 @@ return [
     'Online store'                                            => '在线商店',
     'Local addon'                                             => '本地服务',
     'Conflict tips'                                           => '此服务中发现和现有系统中部分文件发现冲突！以下文件将会被影响，请备份好相关文件后再继续操作',
-    'Login tips'                                              => '此处登录账号为<a href="https://www.iuok.cn" target="_blank">fladmin-TP6官网账号</a>',
+    'Login tips'                                              => '此处登录账号为<a href="https://www.fladmin.cn" target="_blank">fladmin-TP6官网账号</a>',
     'Logined tips'                                            => '你好！%s<br />当前你已经登录，将同步保存你的购买记录',
     'Pay tips'                                                => '扫码支付后如果仍然无法立即下载，请不要重复支付，请稍后再重试安装！',
     'Pay click tips'                                          => '请点击这里在新窗口中进行支付！',

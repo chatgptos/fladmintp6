@@ -19,6 +19,6 @@ class Index extends Frontend
     {
         $newslist = [];
 
-        return jsonp(['newslist' => $newslist, 'new' => count($newslist), 'url' => 'https://www.iuok.cn?ref=news']);
+        return jsonp(['newslist' => $newslist, 'new' => count($newslist), 'url' => 'https://www.fladmin.cn?ref=news']);
     }
 }

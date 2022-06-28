@@ -398,7 +398,7 @@ echo 'Resource';
 <div class="copyright">
     fladmin-TP6
     <span>V<?php echo \think\facade\Config::get('fladmin.version'); ?></span>
-    <span><a href="https://www.iuok.cn/">https://www.iuok.cn</a></span>
+    <span><a href="https://www.fladmin.cn/">https://www.fladmin.cn</a></span>
 </div>
 <?php if (\think\facade\App::isDebug()) { ?>
 <script>

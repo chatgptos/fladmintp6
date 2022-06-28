@@ -38,7 +38,7 @@ return [
     //版本号
     'version' => '3.0.4',
     //API接口地址
-    'api_url' => 'https://api.iuok.cn',
+    'api_url' => '/',
     // 是否开启多语言
     'lang_switch_on' => true,
     //是否允许未知来源的服务压缩包

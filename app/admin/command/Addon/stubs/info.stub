@@ -2,6 +2,6 @@ name = {%name%}
 title = 服务名称{%name%}
 intro = fladmin服务
 author = yourname
-website = https://www.iuok.cn
+website = https://www.fladmin.cn
 version = 1.0.0
 state = 1

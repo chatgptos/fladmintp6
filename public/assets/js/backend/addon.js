@@ -292,7 +292,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template'], function
                                 }
                             };
                             $(document).on('keydown', this.checkEnterKey);
-                            $(".layui-layer-btn1", layero).prop("href", "https://www.iuok.cn/user/register.html").prop("target", "_blank");
+                            $(".layui-layer-btn1", layero).prop("href", "https://www.fladmin.cn/user/register.html").prop("target", "_blank");
                         },
                         end: function () {
                             $(document).off('keydown', this.checkEnterKey);

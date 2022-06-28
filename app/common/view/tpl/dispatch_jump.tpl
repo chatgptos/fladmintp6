@@ -46,7 +46,7 @@
     </p>
 </div>
 <div class="copyright">
-    <p>Powered by <a href="https://www.iuok.cn/?ref=jump">fladmin-TP6</a></p>
+    <p>Powered by <a href="https://www.fladmin.cn/?ref=jump">fladmin-TP6</a></p>
 </div>
 {if $url}
     <script type="text/javascript">
