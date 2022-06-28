@@ -98,7 +98,7 @@ return [
     'The fastest framework based on ThinkPHP6 and Bootstrap' => '基于ThinkPHP6和Bootstrap的极速后台开发框架',
     'Features'                                               => '功能特性',
     'Home'                                                   => '首页',
-    'Store'                                                  => '插件市场',
+    'Store'                                                  => '服务市场',
     'Wxapp'                                                  => '小程序',
     'Services'                                               => '服务',
     'Download'                                               => '下载',

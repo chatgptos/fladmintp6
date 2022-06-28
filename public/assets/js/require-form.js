@@ -141,7 +141,7 @@ define(['jquery', 'bootstrap', 'upload', 'validator', 'validator-lang'], functio
                 }
             },
             citypicker: function (form) {
-                //绑定城市远程插件
+                //绑定城市远程服务
                 if ($("[data-toggle='city-picker']", form).size() > 0) {
                     require(['citypicker'], function () {
                         $(form).on("reset", function () {

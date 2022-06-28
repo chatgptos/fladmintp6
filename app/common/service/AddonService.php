@@ -25,27 +25,27 @@ use app\common\middleware\Addon;
 use app\common\middleware\FastInit;
 
 /**
- * 插件服务
+ * 服务服务
  */
 class AddonService extends Service
 {
     public function register()
     {
-        // 插件目录
+        // 服务目录
         ! defined('ADDON_PATH') && define('ADDON_PATH', app()->getRootPath().'addons'.DIRECTORY_SEPARATOR);
         ! defined('DS') && define('DS', DIRECTORY_SEPARATOR);
-        // 如果插件目录不存在则创建
+        // 如果服务目录不存在则创建
         if (! is_dir(ADDON_PATH)) {
             @mkdir(ADDON_PATH, 0755, true);
         }
-        //注册插件路由
+        //注册服务路由
         $this->addon_route();
-        //注册插件事件
+        //注册服务事件
         $this->addon_event();
     }
 
     /**
-     * 注册插件事件.
+     * 注册服务事件.
      */
     private function addon_event()
     {
@@ -65,7 +65,7 @@ class AddonService extends Service
             }
             Cache::set('hooks', $hooks);
         }
-        //如果在插件中有定义app_init，则直接执行
+        //如果在服务中有定义app_init，则直接执行
         Event::listenEvents($hooks);
         if (isset($hooks['app_init'])) {
             foreach ($hooks['app_init'] as $k => $v) {
@@ -75,7 +75,7 @@ class AddonService extends Service
     }
 
     /**
-     * 注册插件路由.
+     * 注册服务路由.
      */
     private function addon_route()
     {

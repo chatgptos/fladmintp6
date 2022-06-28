@@ -52,7 +52,7 @@ class Sms extends Api
             }
         }
         if (!Hook::get('sms_send')) {
-            $this->error(__('请在后台插件管理安装短信验证插件'));
+            $this->error(__('请在后台服务管理安装短信验证服务'));
         }
         $ret = Smslib::send($mobile, mt_rand(100000, 999999), $event);
         if ($ret) {

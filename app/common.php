@@ -72,7 +72,7 @@ if (! function_exists('model')) {
 }
 
 /**
- * 处理插件钩子.
+ * 处理服务钩子.
  *
  * @param  string  $event  钩子名称
  * @param  array|null  $params  传入参数
@@ -86,7 +86,7 @@ function hook($event, $params = null, bool $once = false)
 }
 
 /**
- * 获得插件列表.
+ * 获得服务列表.
  *
  * @return array
  */
@@ -129,7 +129,7 @@ function get_addon_list()
 }
 
 /**
- * 获得插件内的服务类.
+ * 获得服务内的服务类.
  *
  * @return array
  */
@@ -165,7 +165,7 @@ function get_addon_service()
 }
 
 /**
- * 获得插件自动加载的配置.
+ * 获得服务自动加载的配置.
  *
  * @param  bool  $truncate  是否清除手动配置的钩子
  *
@@ -180,7 +180,7 @@ function get_addon_autoload_config($truncate = false)
         $config['hooks'] = [];
     }
     $route = [];
-    // 读取插件目录及钩子列表
+    // 读取服务目录及钩子列表
     $base = get_class_methods('\\think\\Addons');
     $base = array_merge($base, ['install', 'uninstall', 'enable', 'disable']);
     $url_domain_deploy = false;
@@ -193,7 +193,7 @@ function get_addon_autoload_config($truncate = false)
 
         // 读取出所有公共方法
         $methods = (array) get_class_methods('\\addons\\'.$name.'\\'.ucfirst($name));
-        // 跟插件基类方法做比对，得到差异结果
+        // 跟服务基类方法做比对，得到差异结果
         $hooks = array_diff($methods, $base);
         // 循环将钩子方法写入配置中
         foreach ($hooks as $hook) {
@@ -234,9 +234,9 @@ function get_addon_autoload_config($truncate = false)
 }
 
 /**
- * 获取插件类的类名.
+ * 获取服务类的类名.
  *
- * @param  string  $name  插件名
+ * @param  string  $name  服务名
  * @param  string  $type  返回命名空间类型
  * @param  string  $class  当前类名
  *
@@ -266,9 +266,9 @@ function get_addon_class($name, $type = 'hook', $class = null)
 }
 
 /**
- * 读取插件的基础信息.
+ * 读取服务的基础信息.
  *
- * @param  string  $name  插件名
+ * @param  string  $name  服务名
  *
  * @return array
  */
@@ -283,9 +283,9 @@ function get_addon_info($name)
 }
 
 /**
- * 获取插件类的配置数组.
+ * 获取服务类的配置数组.
  *
- * @param  string  $name  插件名
+ * @param  string  $name  服务名
  *
  * @return array
  */
@@ -300,9 +300,9 @@ function get_addon_fullconfig($name)
 }
 
 /**
- * 获取插件类的配置值值
+ * 获取服务类的配置值值
  *
- * @param  string  $name  插件名
+ * @param  string  $name  服务名
  *
  * @return array
  */
@@ -317,9 +317,9 @@ function get_addon_config($name)
 }
 
 /**
- * 获取插件的单例.
+ * 获取服务的单例.
  *
- * @param  string  $name  插件名
+ * @param  string  $name  服务名
  *
  * @return mixed|null
  */
@@ -362,8 +362,8 @@ if (! function_exists('remove_empty_folder')) {
 
 if (! function_exists('get_addon_tables')) {
     /**
-     * 获取插件创建的表
-     * @param string $name 插件名
+     * 获取服务创建的表
+     * @param string $name 服务名
      * @return array
      */
     function get_addon_tables($name)
@@ -390,9 +390,9 @@ if (! function_exists('get_addon_tables')) {
 
 
 /**
- * 插件显示内容里生成访问插件的url.
+ * 服务显示内容里生成访问服务的url.
  *
- * @param  string  $url  地址 格式：插件名/控制器/方法
+ * @param  string  $url  地址 格式：服务名/控制器/方法
  * @param  array  $vars  变量参数
  * @param  bool|string  $suffix  生成的URL后缀
  * @param  bool|string  $domain  域名
@@ -456,7 +456,7 @@ function addon_url($url, $vars = [], $suffix = true, $domain = false)
 /**
  * 设置基础配置信息.
  *
- * @param  string  $name  插件名
+ * @param  string  $name  服务名
  * @param  array  $array  配置数据
  *
  * @throws Exception
@@ -468,7 +468,7 @@ function set_addon_info($name, $array)
     $addon = get_addon_instance($name);
     $array = $addon->setInfo($name, $array);
     if (! isset($array['name']) || ! isset($array['title']) || ! isset($array['version'])) {
-        throw new Exception('插件配置写入失败');
+        throw new Exception('服务配置写入失败');
     }
     $res = [];
     foreach ($array as $key => $val) {
@@ -496,7 +496,7 @@ function set_addon_info($name, $array)
 /**
  * 写入配置文件.
  *
- * @param  string  $name  插件名
+ * @param  string  $name  服务名
  * @param  array  $config  配置数据
  * @param  bool  $writefile  是否写入配置文件
  *
@@ -526,7 +526,7 @@ function set_addon_config($name, $config, $writefile = true)
 /**
  * 写入配置文件.
  *
- * @param  string  $name  插件名
+ * @param  string  $name  服务名
  * @param  array  $array  配置数据
  *
  * @throws Exception

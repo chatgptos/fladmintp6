@@ -6,7 +6,7 @@ return [
     'Type'                    => '栏目类型',
     'Image'                   => '图片',
     'Total user'              => '总会员数',
-    'Total addon'             => '总插件数',
+    'Total addon'             => '总服务数',
     'Total category'          => '总分类数',
     'Total admin'             => '总管理员数',
     'Today user signup'       => '今日注册',

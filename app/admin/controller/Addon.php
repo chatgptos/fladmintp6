@@ -23,10 +23,10 @@ use think\facade\Env;
 use app\common\controller\Backend;
 
 /**
- * 插件管理.
+ * 服务管理.
  *
  * @icon   fa fa-cube
- * @remark 可在线安装、卸载、禁用、启用插件，同时支持添加本地插件。fladmin-TP6已上线插件商店 ，你可以发布你的免费或付费插件：<a href="https://www.iuok.cn/store.html" target="_blank">https://www.iuok.cn/store.html</a>
+ * @remark 可在线安装、卸载、禁用、启用服务，同时支持添加本地服务。fladmin-TP6已上线服务商店 ，你可以发布你的免费或付费服务：<a href="https://www.iuok.cn/store.html" target="_blank">https://www.iuok.cn/store.html</a>
  */
 class Addon extends Backend
 {
@@ -176,9 +176,9 @@ class Addon extends Backend
             AddonService::uninstall($name, $force);
             if ($tables) {
                 $prefix = Env::get('database.prefix');
-                //删除插件关联表
+                //删除服务关联表
                 foreach ($tables as $index => $table) {
-                    //忽略非插件标识的表名
+                    //忽略非服务标识的表名
                     if (!preg_match("/^{$prefix}{$name}/", $table)) {
                         continue;
                     }
@@ -250,7 +250,7 @@ class Addon extends Backend
     }
 
     /**
-     * 更新插件
+     * 更新服务
      */
     public function upgrade()
     {
@@ -290,7 +290,7 @@ class Addon extends Backend
     }
 
     /**
-     * 已装插件
+     * 已装服务
      */
     public function downloaded()
     {
@@ -355,7 +355,7 @@ class Addon extends Backend
     }
 
     /**
-     * 获取插件相关表
+     * 获取服务相关表
      */
     public function get_table_list()
     {
@@ -366,7 +366,7 @@ class Addon extends Backend
         $tables = get_addon_tables($name);
         $prefix = Env::get('database.prefix');
         foreach ($tables as $index => $table) {
-            //忽略非插件标识的表名
+            //忽略非服务标识的表名
             if (!preg_match("/^{$prefix}{$name}/", $table)) {
                 unset($tables[$index]);
             }

@@ -19,12 +19,12 @@ use think\Response;
 use think\facade\Config;
 
 /**
- * 插件中间件.
+ * 服务中间件.
  */
 class Addon
 {
     /**
-     * 插件中间件.
+     * 服务中间件.
      *
      * @param Request $request
      * @param Closure $next

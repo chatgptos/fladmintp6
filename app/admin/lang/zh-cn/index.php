@@ -37,7 +37,7 @@ return [
     'Wipe all cache'                                             => '一键清除缓存',
     'Wipe content cache'                                         => '清空内容缓存',
     'Wipe template cache'                                        => '清除模板缓存',
-    'Wipe addons cache'                                          => '清除插件缓存',
+    'Wipe addons cache'                                          => '清除服务缓存',
     'Check for updates'                                          => '检测更新',
     'Discover new version'                                       => '发现新版本',
     'Go to download'                                             => '去下载更新',

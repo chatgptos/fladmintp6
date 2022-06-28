@@ -9867,7 +9867,7 @@ KISSY.add("anim/fx", function(S, DOM, undefined) {
  *  - 标准：http://www.zenelements.com/blog/css3-transform/
  *  - ie: http://www.useragentman.com/IETransformsTranslator/
  *  - wiki: http://en.wikipedia.org/wiki/Transformation_matrix
- *  - jq 插件: http://plugins.jquery.com/project/2d-transform
+ *  - jq 服务: http://plugins.jquery.com/project/2d-transform
  **/
 
 /**

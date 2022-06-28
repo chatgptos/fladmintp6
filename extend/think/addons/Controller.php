@@ -21,11 +21,11 @@ use app\common\library\Auth;
 use app\common\controller\BaseController;
 
 /**
- * 插件基类控制器.
+ * 服务基类控制器.
  */
 class Controller extends BaseController
 {
-    // 当前插件操作
+    // 当前服务操作
     protected $addon = null;
     protected $controller = null;
     protected $action = null;

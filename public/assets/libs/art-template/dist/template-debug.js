@@ -492,7 +492,7 @@ function compiler (source, options) {
        
         if (parser) {
         
-             // 语法转换插件钩子
+             // 语法转换服务钩子
             code = parser(code, options);
             
         } else if (debug) {

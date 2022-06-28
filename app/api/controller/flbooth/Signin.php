@@ -29,7 +29,7 @@ class Signin extends Api
 	{
 	    $config = get_addon_config('signin');
 		if(!$config){
-			$this->error('签到插件不存在！请安装官方发布签到插件');
+			$this->error('签到服务不存在！请安装官方发布签到服务');
 		}
 	    $signdata = $config['signinscore'];
 	    $date = $this->request->request('date', date("Y-m-d"), "trim");
@@ -192,7 +192,7 @@ class Signin extends Api
 	{
 		$config = get_addon_config('signin');
 		if(!$config){
-			$this->error('签到插件不存在！请安装官方发布签到插件');
+			$this->error('签到服务不存在！请安装官方发布签到服务');
 		}
 	    $data = \addons\signin\model\Signin::with(["user"])
 	        // ->where("created", ">", \fast\Date::unixtime('day', -1))

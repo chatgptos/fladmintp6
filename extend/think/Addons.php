@@ -16,7 +16,7 @@ use think\facade\View;
 use think\facade\Config;
 
 /**
- * 插件基类
+ * 服务基类
  * Class Addons.
  *
  * @author Byron Sampson <xiaobo.sun@qq.com>
@@ -27,11 +27,11 @@ abstract class Addons
     protected $view = null;
     // 当前错误信息
     protected $error;
-    // 插件目录
+    // 服务目录
     public $addons_path = '';
-    // 插件配置作用域
+    // 服务配置作用域
     protected $configRange = 'addonconfig';
-    // 插件信息作用域
+    // 服务信息作用域
     protected $infoRange = 'addoninfo';
 
     /**
@@ -40,7 +40,7 @@ abstract class Addons
     public function __construct()
     {
         $name = $this->getName();
-        // 获取当前插件目录
+        // 获取当前服务目录
         $this->addons_path = ADDON_PATH.$name.DIRECTORY_SEPARATOR;
 
         // 初始化视图模型
@@ -84,7 +84,7 @@ abstract class Addons
     }
 
     /**
-     * 获取插件的配置数组.
+     * 获取服务的配置数组.
      *
      * @param string $name 可选模块名
      *
@@ -136,7 +136,7 @@ abstract class Addons
     }
 
     /**
-     * 设置插件信息数据.
+     * 设置服务信息数据.
      *
      * @param $name
      * @param array $value
@@ -289,6 +289,6 @@ abstract class Addons
     //必须实现安装
     abstract public function install();
 
-    //必须卸载插件方法
+    //必须卸载服务方法
     abstract public function uninstall();
 }

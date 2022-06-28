@@ -5,7 +5,7 @@ namespace think\addons;
 use think\Exception;
 
 /**
- * 插件异常处理类
+ * 服务异常处理类
  * @package think\addons
  */
 class AddonException extends Exception

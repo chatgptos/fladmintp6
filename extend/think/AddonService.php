@@ -15,16 +15,16 @@ use think\facade\Env;
 use think\facade\Filesystem;
 
 /**
- * 插件服务
+ * 服务服务
  * @package think\addons
  */
 class AddonService
 {
 
     /**
-     * 远程下载插件
+     * 远程下载服务
      *
-     * @param string $name   插件名称
+     * @param string $name   服务名称
      * @param array  $extend 扩展参数
      * @return  string
      */
@@ -62,9 +62,9 @@ class AddonService
     }
 
     /**
-     * 解压插件
+     * 解压服务
      *
-     * @param string $name 插件名称
+     * @param string $name 服务名称
      * @return  string
      * @throws  Exception
      */
@@ -76,7 +76,7 @@ class AddonService
         $addonsBackupDir = self::getAddonsBackupDir();
         $file = $addonsBackupDir . $name . '.zip';
 
-        // 打开插件压缩包
+        // 打开服务压缩包
         $zip = new ZipFile();
         try {
             $zip->openFile($file);
@@ -90,7 +90,7 @@ class AddonService
             @mkdir($dir, 0755);
         }
 
-        // 解压插件压缩包
+        // 解压服务压缩包
         try {
             $zip->extractTo($dir);
         } catch (ZipException $e) {
@@ -103,7 +103,7 @@ class AddonService
 
     /**
      * 离线安装
-     * @param string $file 插件压缩包
+     * @param string $file 服务压缩包
      * @param array  $extend
      */
     public static function local($file, $extend = [])
@@ -135,7 +135,7 @@ class AddonService
         $zip = new ZipFile();
         try {
 
-            // 打开插件压缩包
+            // 打开服务压缩包
             try {
                 $zip->openFile($tmpFile);
             } catch (ZipException $e) {
@@ -145,18 +145,18 @@ class AddonService
 
             $config = self::getInfoIni($zip);
 
-            // 判断插件标识
+            // 判断服务标识
             $name = isset($config['name']) ? $config['name'] : '';
             if (!$name) {
                 throw new Exception('Addon info file data incorrect');
             }
 
-            // 判断插件是否存在
+            // 判断服务是否存在
             if (!preg_match("/^[a-zA-Z0-9]+$/", $name)) {
                 throw new Exception('Addon name incorrect');
             }
 
-            // 判断新插件是否存在
+            // 判断新服务是否存在
             $newAddonDir = self::getAddonDir($name);
             if (is_dir($newAddonDir)) {
                 throw new Exception('Addon already exists');
@@ -173,10 +173,10 @@ class AddonService
             // 压缩包验证、版本依赖判断
             self::valid($params);
 
-            //创建插件目录
+            //创建服务目录
             @mkdir($newAddonDir, 0755, true);
 
-            // 解压到插件目录
+            // 解压到服务目录
             try {
                 $zip->extractTo($newAddonDir);
             } catch (ZipException $e) {
@@ -186,14 +186,14 @@ class AddonService
 
             Db::startTrans();
             try {
-                //默认禁用该插件
+                //默认禁用该服务
                 $info = get_addon_info($name);
                 if ($info['state']) {
                     $info['state'] = 0;
                     set_addon_info($name, $info);
                 }
 
-                //执行插件的安装方法
+                //执行服务的安装方法
                 $class = get_addon_class($name);
                 if (class_exists($class)) {
                     $addon = new $class();
@@ -255,8 +255,8 @@ class AddonService
     }
 
     /**
-     * 备份插件
-     * @param string $name 插件名称
+     * 备份服务
+     * @param string $name 服务名称
      * @return bool
      * @throws Exception
      */
@@ -281,9 +281,9 @@ class AddonService
     }
 
     /**
-     * 检测插件是否完整
+     * 检测服务是否完整
      *
-     * @param string $name 插件名称
+     * @param string $name 服务名称
      * @return  boolean
      * @throws  Exception
      */
@@ -307,7 +307,7 @@ class AddonService
     /**
      * 是否有冲突
      *
-     * @param string $name 插件名称
+     * @param string $name 服务名称
      * @return  boolean
      * @throws  AddonException
      */
@@ -325,7 +325,7 @@ class AddonService
     /**
      * 导入SQL
      *
-     * @param string $name 插件名称
+     * @param string $name 服务名称
      * @return  boolean
      */
     public static function importsql($name)
@@ -356,7 +356,7 @@ class AddonService
     }
 
     /**
-     * 刷新插件缓存文件
+     * 刷新服务缓存文件
      *
      * @return  boolean
      * @throws  Exception
@@ -404,9 +404,9 @@ EOD;
     }
 
     /**
-     * 安装插件
+     * 安装服务
      *
-     * @param string  $name   插件名称
+     * @param string  $name   服务名称
      * @param boolean $force  是否覆盖
      * @param array   $extend 扩展参数
      * @return  boolean
@@ -419,16 +419,16 @@ EOD;
             throw new Exception('Addon already exists');
         }
 
-        // 远程下载插件
+        // 远程下载服务
         $tmpFile = self::download($name, $extend);
 
         $addonDir = self::getAddonDir($name);
 
         try {
-            // 解压插件压缩包到插件目录
+            // 解压服务压缩包到服务目录
             self::unzip($name);
 
-            // 检查插件是否完整
+            // 检查服务是否完整
             self::check($name);
 
             if (!$force) {
@@ -446,7 +446,7 @@ EOD;
             @unlink($tmpFile);
         }
 
-        // 默认启用该插件
+        // 默认启用该服务
         $info = get_addon_info($name);
 
         Db::startTrans();
@@ -472,7 +472,7 @@ EOD;
         // 导入
         self::importsql($name);
 
-        // 启用插件
+        // 启用服务
         self::enable($name, true);
 
         $info['config'] = get_addon_config($name) ? 1 : 0;
@@ -481,7 +481,7 @@ EOD;
     }
 
     /**
-     * 卸载插件
+     * 卸载服务
      *
      * @param string  $name
      * @param boolean $force 是否强制卸载
@@ -498,7 +498,7 @@ EOD;
             self::noconflict($name);
         }
 
-        // 移除插件全局资源文件
+        // 移除服务全局资源文件
         if ($force) {
             $list = self::getGlobalFiles($name);
             foreach ($list as $k => $v) {
@@ -517,7 +517,7 @@ EOD;
             throw new Exception($e->getMessage());
         }
 
-        // 移除插件目录
+        // 移除服务目录
         rmdirs(ADDON_PATH . $name);
 
         // 刷新
@@ -527,7 +527,7 @@ EOD;
 
     /**
      * 启用
-     * @param string  $name  插件名称
+     * @param string  $name  服务名称
      * @param boolean $force 是否强制覆盖
      * @return  boolean
      */
@@ -566,7 +566,7 @@ EOD;
 
         $files = self::getGlobalFiles($name);
         if ($files) {
-            //刷新插件配置缓存
+            //刷新服务配置缓存
             self::config($name, ['files' => $files]);
         }
 
@@ -582,9 +582,9 @@ EOD;
             }
         }
 
-        //插件纯净模式时将插件目录下的application、public和assets删除
+        //服务纯净模式时将服务目录下的application、public和assets删除
         if (config('fladmin.addon_pure_mode')) {
-            // 删除插件目录已复制到全局的文件
+            // 删除服务目录已复制到全局的文件
             @rmdirs($sourceAssetsDir);
             foreach (self::getCheckDirs() as $k => $dir) {
                 @rmdirs($addonDir . $k);
@@ -618,7 +618,7 @@ EOD;
     /**
      * 禁用
      *
-     * @param string  $name  插件名称
+     * @param string  $name  服务名称
      * @param boolean $force 是否强制禁用
      * @return  boolean
      * @throws  Exception
@@ -660,15 +660,15 @@ EOD;
         $config = self::config($name);
 
         $addonDir = self::getAddonDir($name);
-        //插件资源目录
+        //服务资源目录
         $destAssetsDir = self::getDestAssetsDir($name);
 
-        // 移除插件全局文件
+        // 移除服务全局文件
         $list = self::getGlobalFiles($name);
 
 
-        //插件纯净模式时将原有的文件复制回插件目录
-        //当无法获取全局文件列表时也将列表复制回插件目录
+        //服务纯净模式时将原有的文件复制回服务目录
+        //当无法获取全局文件列表时也将列表复制回服务目录
         if (config('fladmin.addon_pure_mode') || !$list) {
             if ($config && isset($config['files']) && is_array($config['files'])) {
                 foreach ($config['files'] as $index => $item) {
@@ -676,7 +676,7 @@ EOD;
                     $item = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $item);
                     $item_tp5 = str_replace('app'.DIRECTORY_SEPARATOR, 'application'.DIRECTORY_SEPARATOR, $item);
 
-                    //插件资源目录，无需重复复制
+                    //服务资源目录，无需重复复制
                     if (stripos($item, str_replace(app()->getRootPath(), '', $destAssetsDir)) === 0) {
                         continue;
                     }
@@ -692,7 +692,7 @@ EOD;
                 $list = $config['files'];
             }
 
-            //复制插件目录资源
+            //复制服务目录资源
             if (is_dir($destAssetsDir)) {
                 @copydirs($destAssetsDir, $addonDir . 'assets' . DIRECTORY_SEPARATOR);
             }
@@ -707,7 +707,7 @@ EOD;
             @unlink($file);
         }
 
-        // 移除插件空目录
+        // 移除服务空目录
         $dirs = array_filter(array_unique($dirs));
         foreach ($dirs as $k => $v) {
             remove_empty_folder($v);
@@ -739,9 +739,9 @@ EOD;
     }
 
     /**
-     * 升级插件
+     * 升级服务
      *
-     * @param string $name   插件名称
+     * @param string $name   服务名称
      * @param array  $extend 扩展参数
      */
     public static function upgrade($name, $extend = [])
@@ -755,22 +755,22 @@ EOD;
             //备份配置
         }
 
-        // 远程下载插件
+        // 远程下载服务
         $tmpFile = self::download($name, $extend);
 
-        // 备份插件文件
+        // 备份服务文件
         self::backup($name);
 
         $addonDir = self::getAddonDir($name);
 
-        // 删除插件目录下的application和public
+        // 删除服务目录下的application和public
         $files = self::getCheckDirs();
         foreach ($files as $index => $file) {
             @rmdirs($addonDir . $index);
         }
 
         try {
-            // 解压插件
+            // 解压服务
             self::unzip($name);
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
@@ -825,7 +825,7 @@ EOD;
     }
 
     /**
-     * 读取或修改插件配置
+     * 读取或修改服务配置
      * @param string $name
      * @param array  $changed
      * @return array
@@ -846,9 +846,9 @@ EOD;
     }
 
     /**
-     * 获取插件在全局的文件
+     * 获取服务在全局的文件
      *
-     * @param string  $name         插件名称
+     * @param string  $name         服务名称
      * @param boolean $onlyconflict 是否只返回冲突文件
      * @return  array
      */
@@ -861,7 +861,7 @@ EOD;
 
         $assetDir = self::getDestAssetsDir($name);
 
-        // 扫描插件目录是否有覆盖的文件
+        // 扫描服务目录是否有覆盖的文件
         foreach ($checkDirList as $dirName => $dirName_tp6) {
             //检测目录是否存在
             if (!is_dir($addonDir . $dirName)) {
@@ -904,7 +904,7 @@ EOD;
     }
 
     /**
-     * 获取插件行为、路由配置文件
+     * 获取服务行为、路由配置文件
      * @return string
      */
     public static function getExtraAddonsFile()
@@ -922,7 +922,7 @@ EOD;
     }
 
     /**
-     * 获取指定插件的目录
+     * 获取指定服务的目录
      */
     public static function getAddonDir($name)
     {
@@ -931,7 +931,7 @@ EOD;
     }
 
     /**
-     * 获取插件备份目录
+     * 获取服务备份目录
      */
     public static function getAddonsBackupDir()
     {
@@ -943,8 +943,8 @@ EOD;
     }
 
     /**
-     * 获取插件源资源文件夹
-     * @param string $name 插件名称
+     * 获取服务源资源文件夹
+     * @param string $name 服务名称
      * @return  string
      */
     protected static function getSourceAssetsDir($name)
@@ -953,8 +953,8 @@ EOD;
     }
 
     /**
-     * 获取插件目标资源文件夹
-     * @param string $name 插件名称
+     * 获取服务目标资源文件夹
+     * @param string $name 服务名称
      * @return  string
      */
     protected static function getDestAssetsDir($name)
@@ -1018,7 +1018,7 @@ EOD;
     protected static function getInfoIni($zip)
     {
         $config = [];
-        // 读取插件信息
+        // 读取服务信息
         try {
             $info = $zip->getEntryContents('info.ini');
             $config = parse_ini_string($info);

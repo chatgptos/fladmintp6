@@ -52,7 +52,7 @@ define(['jquery', 'bootstrap', 'backend', 'addtabs', 'adminlte', 'form'], functi
                 Backend.api.addtabs($(this).data("url"));
             });
 
-            //读取首次登录推荐插件列表
+            //读取首次登录推荐服务列表
             if (localStorage.getItem("fastep") == "installed") {
                 $.ajax({
                     url: Config.fladmin.api_url + '/addon/recommend',

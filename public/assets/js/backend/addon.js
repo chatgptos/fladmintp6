@@ -205,7 +205,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template'], function
                 });
             });
 
-            // 查看插件首页
+            // 查看服务首页
             $(document).on("click", ".btn-addonindex", function () {
                 if ($(this).attr("href") == 'javascript:;') {
                     Layer.msg(__('Not installed tips'), {icon: 7});
@@ -364,7 +364,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template'], function
                     });
                     Controller.api.refresh(table, name);
                 }, function (data, ret) {
-                    //如果是需要购买的插件则弹出二维码提示
+                    //如果是需要购买的服务则弹出二维码提示
                     if (ret && ret.code === -1) {
                         //扫码支付
                         Layer.open({
@@ -394,7 +394,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template'], function
                             }
                         });
                     } else if (ret && ret.code === -3) {
-                        //插件目录发现影响全局的文件
+                        //服务目录发现影响全局的文件
                         Layer.open({
                             content: Template("conflicttpl", ret.data),
                             shade: 0.8,
@@ -426,7 +426,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template'], function
                     Controller.api.refresh(table, name);
                 }, function (data, ret) {
                     if (ret && ret.code === -3) {
-                        //插件目录发现影响全局的文件
+                        //服务目录发现影响全局的文件
                         Layer.open({
                             content: Template("conflicttpl", ret.data),
                             shade: 0.8,
@@ -459,7 +459,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template'], function
                     Controller.api.refresh(table, name);
                 }, function (data, ret) {
                     if (ret && ret.code === -3) {
-                        //插件目录发现影响全局的文件
+                        //服务目录发现影响全局的文件
                         Layer.open({
                             content: Template("conflicttpl", ret.data),
                             shade: 0.8,
