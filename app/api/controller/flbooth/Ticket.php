@@ -87,7 +87,7 @@ class Ticket extends Api
 		}
 		// 点击 +1
 
-		$row->setInc('views');
+//		$row->setInc('views');
 		$this->success('返回成功', $row);
     }
     
@@ -102,13 +102,13 @@ class Ticket extends Api
 	 */
 	public function adDetails($id = null)
 	{
-		$row = model('app\api\model\flbooth\Advert')->get($id);
+		$row = model('app\admin\model\Advert')->get($id);
 		//
 		if(!$row){
 			$this->error(__('没有找到任何内容'));
 		}
 		// 点击 +1
-		$row->setInc('views');
+//		$row->setInc('views',1);
 		$this->success('返回成功', $row);
 	}
 	

@@ -1,0 +1,128 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" data-rule="required" class="form-control" name="row[name]" type="text" value="{$row.name}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Is_recommend')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-is_recommend" class="form-control" name="row[is_recommend]" type="number" value="{$row.is_recommend}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Act_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-act_id" data-rule="required" data-source="act/index" class="form-control selectpage" name="row[act_id]" type="text" value="{$row.act_id}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Hall_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-hall_id" data-rule="required" data-source="hall/index" class="form-control selectpage" name="row[hall_id]" type="text" value="{$row.hall_id}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Topic_content')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-topic_content" class="form-control editor" rows="5" name="row[topic_content]" cols="50">{$row.topic_content}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Intro')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-intro" data-rule="required" class="form-control " rows="5" name="row[intro]" cols="50">{$row.intro}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Start_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-start_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[start_time]" type="text" value="{:$row.start_time?datetime($row.start_time):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('End_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-end_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[end_time]" type="text" value="{:$row.end_time?datetime($row.end_time):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Data')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-data" data-rule="required" class="form-control " rows="5" name="row[data]" cols="50">{$row.data}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Template')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-template" data-rule="required" class="form-control" name="row[template]" type="text" value="{$row.template}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Css')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-css" data-rule="required" class="form-control " rows="5" name="row[css]" cols="50">{$row.css}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Topic_img')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-topic_img" class="form-control" size="50" name="row[topic_img]" type="text" value="{$row.topic_img}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-topic_img" class="btn btn-danger plupload" data-input-id="c-topic_img" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-topic_img"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-topic_img" class="btn btn-primary fachoose" data-input-id="c-topic_img" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-topic_img"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-topic_img"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Title_img')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-title_img" class="form-control" size="50" name="row[title_img]" type="text" value="{$row.title_img}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-title_img" class="btn btn-danger plupload" data-input-id="c-title_img" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-title_img"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-title_img" class="btn btn-primary fachoose" data-input-id="c-title_img" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-title_img"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-title_img"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Base_style')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-base_style" class="form-control" name="row[base_style]" type="text" value="{$row.base_style}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Htmls')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-htmls" class="form-control " rows="5" name="row[htmls]" cols="50">{$row.htmls}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Keywords')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-keywords" class="form-control" name="row[keywords]" type="text" value="{$row.keywords}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Description')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-description" class="form-control" name="row[description]" type="text" value="{$row.description}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
