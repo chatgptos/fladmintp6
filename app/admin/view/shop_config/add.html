@@ -1,0 +1,142 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Shop_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-shop_id" data-rule="required" data-source="shop/index" class="form-control selectpage" name="row[shop_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Freight')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-freight" data-rule="required" class="form-control selectpicker" name="row[freight]">
+                {foreach name="freightList" item="vo"}
+                    <option value="{$key}" {in name="key" value="1"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Category_style')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-category_style" data-rule="required" class="form-control selectpicker" name="row[category_style]">
+                {foreach name="categoryStyleList" item="vo"}
+                    <option value="{$key}" {in name="key" value="1"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Iscloud')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-iscloud" data-rule="required" class="form-control selectpicker" name="row[iscloud]">
+                {foreach name="iscloudList" item="vo"}
+                    <option value="{$key}" {in name="key" value="0"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Isauto')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-isauto" data-rule="required" class="form-control selectpicker" name="row[isauto]">
+                {foreach name="isautoList" item="vo"}
+                    <option value="{$key}" {in name="key" value="0"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Secret')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-secret" class="form-control" name="row[secret]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Key')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-key" class="form-control" name="row[key]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Partnerid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-partnerId" class="form-control" name="row[partnerId]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Partnerkey')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-partnerKey" class="form-control" name="row[partnerKey]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Siid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-siid" class="form-control" name="row[siid]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Tempid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-tempid" class="form-control" name="row[tempid]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Welcome')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-welcome" class="form-control " rows="5" name="row[welcome]" cols="50"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Sendname')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-sendName" class="form-control" name="row[sendName]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Sendphonenum')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-sendPhoneNum" class="form-control" name="row[sendPhoneNum]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Sendaddr')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-sendAddr" class="form-control " rows="5" name="row[sendAddr]" cols="50"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Returnname')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-returnName" class="form-control" name="row[returnName]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Returnphonenum')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-returnPhoneNum" class="form-control" name="row[returnPhoneNum]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Returnaddr')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-returnAddr" class="form-control " rows="5" name="row[returnAddr]" cols="50"></textarea>
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

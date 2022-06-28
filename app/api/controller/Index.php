@@ -32,7 +32,7 @@ class Index extends Api
         $activity = \app\admin\model\Activity::where('id', $booth_id)->find();
         $activity['activity_img'] ='http://flshop.com//assets/addons/flshop/img/show/main_bg3x.png';
         //
-        $article = model('app\admin\model\flbooth\Article')
+        $article = model('app\api\model\flbooth\Article')
             ->where(['id' => $article_id])
             ->find();
 

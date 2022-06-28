@@ -8,7 +8,7 @@ use app\common\controller\Api;
  */
 class BoothUserCollect extends Api
 {
-    protected $noNeedLogin = [];
+    protected $noNeedLogin = ['*'];
 	protected $noNeedRight = ['*'];
     
 	public function _initialize()
@@ -33,6 +33,8 @@ class BoothUserCollect extends Api
 		if ($this->request->isPost()) { 
 			$user_id = $this->auth->id;
 
+			var_dump($user_id);
+			die;
 
             $post = $this->request->post();
 
