@@ -1,9 +1,9 @@
 {
   "name": "fladmin",
-  "description": "the fastest admin framework",
+  "description": "the fenglei admin framework",
   "main": "",
   "license": "Apache2.0",
-  "homepage": "https://www.iuok.cn",
+  "homepage": "https://www.fladmin.cn",
   "private": true,
   "dependencies": {
     "jquery": "^2.1.4",
