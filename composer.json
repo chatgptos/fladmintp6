@@ -10,12 +10,12 @@
         "fladmin",
         "fladmin-tp6"
     ],
-    "homepage": "https://www.iuok.cn",
+    "homepage": "https://www.fladmin.cn",
     "license": "Apache-2.0",
     "authors": [
         {
-            "name": "ice",
-            "email": "ice@sbing.vip"
+            "name": "jack",
+            "email": "1276789849@qq.com"
         }
     ],
     "require": {
