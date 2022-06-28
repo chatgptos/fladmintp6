@@ -3,10 +3,10 @@
  * *
  *  * ============================================================================
  *  * Created by PhpStorm.
- *  * User: Ice
- *  * 邮箱: ice@sbing.vip
- *  * 网址: https://sbing.vip
- *  * Date: 2019/9/19 下午3:53
+ *  * User: Jack
+ *  * 邮箱: 1276789849@qq.com
+ *  * 网址: https://fladmin.cn
+ *  * Date: 2022/6/19 下午3:53
  *  * ============================================================================.
  */
 declare(strict_types=1);
@@ -22,7 +22,7 @@ use think\facade\Cookie;
 use think\facade\Config;
 
 /**
- * Fast初始化，Admin/Index/Addon都会执行此方法，除了Api.
+ * Fladmin初始化，Admin/Index/Addon都会执行此方法，除了Api.
  */
 class FastInit
 {
